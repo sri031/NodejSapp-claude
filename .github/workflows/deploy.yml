@@ -1,0 +1,30 @@
+name: Deploy own JavaScript file
+on: push
+jobs:
+  linting:  
+    runs-on: ubuntu-latest
+    steps:
+      - name: to checkout code  
+        uses: actions/checkout@v4
+      - name: to install dependencies 
+        run: npm ci
+      - name: to run lint 
+        run: npm lint
+  testing:  
+    runs-on: ubuntu-latest
+    needs: linting
+    steps:
+      - name: to checkout code
+        uses: actions/checkout@v4
+      - name: to install dependencies
+        run: npm ci 
+      - name: To run testing
+        run: npm test 
+  Deploy:
+    runs-on: ubuntu-latest
+    needs: testing
+    steps:
+      - name: To deploy the application 
+        run: |
+         echo "Deploying ... "      
+         echo "deploying"
