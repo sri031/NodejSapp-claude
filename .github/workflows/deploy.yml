@@ -6,6 +6,11 @@ jobs:
     steps:
       - name: to checkout code  
         uses: actions/checkout@v4
+      - name: to cache dependicencies 
+        uses: actions/cache@v4  
+        with:
+          path:
+            dept-cache
       - name: to install dependencies 
         run: npm install 
       - name: to run lint 
@@ -16,6 +21,11 @@ jobs:
     steps:
       - name: to checkout code
         uses: actions/checkout@v4
+      - name: to cache dependicencies 
+        uses: actions/cache@v4  
+        with:
+          path:
+            dept-cache
       - name: to install dependencies
         run: npm install
       - name: To run testing
